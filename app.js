@@ -8,13 +8,9 @@ let validator = require("express-validator");
 let methodOverride = require("method-override");
 let fileUpload = require("express-fileupload");
 let passport = require("passport");
-require("dotenv").config();
+// require("dotenv").config();
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => console.log(`Connection to MongoDb is success!`))
-  .catch((error) => console.log(" \n Connection error!!! \n\n", error));
-// const db = 'mongodb+srv://Roman:Roman4321@cluster0.xy7fk.mongodb.net/CART?retryWrites=true&w=majority';
+const db = 'mongodb+srv://Roman:Roman4321@cluster0.xy7fk.mongodb.net/CART?retryWrites=true&w=majority';
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -136,21 +132,21 @@ app.use(products);
 app.use(cart);
 app.use(users);
 
-app.listen(PORT, () => {
-  console.log(`Server is listening PORT ${PORT}...`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is listening PORT ${PORT}...`);
+// });
 
-// async function start() {
-//     try {
-//       await mongoose.connect(db);
-//       console.log(`Connection to MongoDb is success!`);
-//       app.listen(PORT, () => {
-//         console.log(`Server is listening PORT ${PORT}...`);
-//       });
-//     }
-//     catch (error) {
-//       console.log(" \n Connection error!!! \n\n", error);
-//     }
-// }
+async function start() {
+    try {
+      await mongoose.connect(db);
+      console.log(`Connection to MongoDb is success!`);
+      app.listen(PORT, () => {
+        console.log(`Server is listening PORT ${PORT}...`);
+      });
+    }
+    catch (error) {
+      console.log(" \n Connection error!!! \n\n", error);
+    }
+}
 
 // start();
