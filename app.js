@@ -148,5 +148,4 @@ async function start() {
       console.log(" \n Connection error!!! \n\n", error);
     }
 }
-
-// start();
+start();
