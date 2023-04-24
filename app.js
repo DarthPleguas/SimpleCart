@@ -14,7 +14,6 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log(`Connection to MongoDb is success!`))
   .catch((error) => console.log(" \n Connection error!!! \n\n", error));
-// const db = 'mongodb+srv://Roman:Roman4321@cluster0.xy7fk.mongodb.net/CART?retryWrites=true&w=majority';
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -36,8 +35,6 @@ app.locals.errors = null;
 let Page = require("./models/page");
 // Get all pages to pass to header.ejs
 Page.find({})
-  .sort({ sorting: 1 })
-  .exec()
   .then((pages) => {
     app.locals.pages = pages;
   })
@@ -139,18 +136,3 @@ app.use(users);
 app.listen(PORT, () => {
   console.log(`Server is listening PORT ${PORT}...`);
 });
-
-// async function start() {
-//     try {
-//       await mongoose.connect(db);
-//       console.log(`Connection to MongoDb is success!`);
-//       app.listen(PORT, () => {
-//         console.log(`Server is listening PORT ${PORT}...`);
-//       });
-//     }
-//     catch (error) {
-//       console.log(" \n Connection error!!! \n\n", error);
-//     }
-// }
-
-// start();
