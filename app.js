@@ -11,7 +11,8 @@ let passport = require("passport");
 require("dotenv").config();
 
 mongoose
-  .connect(process.env.MONGO_URL)
+//   .connect(process.env.MONGO_URL)
+.connect('mongodb+srv://Roman:Roman4321@cluster0.xy7fk.mongodb.net/CART?retryWrites=true&w=majority')
   .then(() => console.log(`Connection to MongoDb is success!`))
   .catch((error) => console.log(" \n Connection error!!! \n\n", error));
 
